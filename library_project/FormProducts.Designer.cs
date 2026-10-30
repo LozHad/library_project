@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProducts));
             flowLayoutPanelProducts = new FlowLayoutPanel();
             SuspendLayout();
             // 
@@ -47,6 +48,7 @@
             ClientSize = new Size(834, 561);
             Controls.Add(flowLayoutPanelProducts);
             Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "FormProducts";
             StartPosition = FormStartPosition.CenterScreen;

@@ -30,7 +30,7 @@
         {
             lblPublisher = new Label();
             lblQuantity = new Label();
-            lblGenre = new Label();
+            lblLists = new Label();
             lblHeader = new Label();
             pbImage = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pbImage).BeginInit();
@@ -54,14 +54,14 @@
             lblQuantity.TabIndex = 9;
             lblQuantity.Text = "label1";
             // 
-            // lblGenre
+            // lblLists
             // 
-            lblGenre.Font = new Font("Calibri", 12F);
-            lblGenre.Location = new Point(150, 47);
-            lblGenre.Name = "lblGenre";
-            lblGenre.Size = new Size(634, 22);
-            lblGenre.TabIndex = 8;
-            lblGenre.Text = "label1";
+            lblLists.Font = new Font("Calibri", 12F);
+            lblLists.Location = new Point(150, 47);
+            lblLists.Name = "lblLists";
+            lblLists.Size = new Size(634, 22);
+            lblLists.TabIndex = 8;
+            lblLists.Text = "label1";
             // 
             // lblHeader
             // 
@@ -89,7 +89,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(lblPublisher);
             Controls.Add(lblQuantity);
-            Controls.Add(lblGenre);
+            Controls.Add(lblLists);
             Controls.Add(lblHeader);
             Controls.Add(pbImage);
             Name = "ProductCard";
@@ -101,7 +101,7 @@
         #endregion
         private Label lblPublisher;
         private Label lblQuantity;
-        private Label lblGenre;
+        private Label lblLists;
         private Label lblHeader;
         private PictureBox pbImage;
     }

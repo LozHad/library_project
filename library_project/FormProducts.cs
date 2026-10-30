@@ -4,6 +4,8 @@ namespace library_project
 {
     public partial class FormProducts : Form
     {
+        private bool hasLoan;
+
         public FormProducts()
         {
             InitializeComponent();
@@ -29,12 +31,14 @@ namespace library_project
                         .Select(b => new
                         {
                             Book = b,
+                            dateOfLoan = db.Loans.Select(l => l.DateOfIssue).FirstOrDefault(),
                             GenreName = db.Genres.Where(g => g.Id == b.IdGenres).Select(g => g.Genre1).FirstOrDefault() ?? "Без жанра",
                             AuthorName = db.Authors.Where(a => a.Id == b.IdAuthor).Select(a => a.Author1).FirstOrDefault() ?? "Без автора",
                             PublisherName = db.Publishers.Where(pb => pb.Id == b.IdPublisher).Select(pb => pb.Publisher1).FirstOrDefault() ?? "Не указано"
                         })
                         .ToList();
 
+                    
 
                     foreach (var p in products)
                     {
@@ -42,12 +46,27 @@ namespace library_project
 
                         Image productImg = LoadProductImage(p.Book.Image);
 
+                        var oneMonthAgo = DateOnly.FromDateTime(DateTime.Now.AddDays(-30));
+                        if (p.dateOfLoan < oneMonthAgo)
+                        {
+                            hasLoan = true;
+                        }
+                        else
+                        {
+                            hasLoan = false;
+                        }
+
                         card.FillData(
+                            ISBN: p.Book.Isbn,
                             author: p.AuthorName,
                             name: p.Book.Name,
                             genre: p.GenreName,
                             publisher: p.PublisherName ?? "Не указано",
-                            totalPairs: (int)p.Book.CopiesAvaliable,
+                            year: p.Book.YearOfPublication,
+                            lists: p.Book.Lists,
+                            totalPairs: p.Book.CopiesTotal,
+                            loan: hasLoan,
+                            avaliablePairs: p.Book.CopiesAvaliable,
                             productImages: productImg
                         );
 
